@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ranking | Which Methodology?</title>
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='images/wm_favicon.ico') }}" type="image/x-icon">
+</head>
+<body>
+    <div class="logo-container-forms">
+        <a href="{{ url_for('index') }}">
+            <img src="{{ url_for('static', filename='images/wm_logo.png') }}" alt="Logo do Sistema" class="logo-img">
+        </a>
+    </div>
+    
+    <div class="container">
+
+        <!-- Título fora do carrossel -->
+        <h2 class="title-criteria">Critérios de Avaliação</h2>
+
+        <form method="post">
+            <!-- Carrossel Swiper -->
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <!-- Categoria 1: Características do Projeto -->
+                    <div class="swiper-slide">
+                        <div class="category-block">
+                            <h3>Características do Projeto</h3>
+                            
+                            <div class="row">
+                                <br>
+                                <strong>Tamanho do Projeto</strong> 
+                                <p>Avalia o escopo geral do projeto em termos de quantidade de entregas e esforço.</p>
+                                <small>(Pequeno <-> Grande)</small>
+                                <input type="range" id="tam_proj" name="tam_proj" min="1" max="5" step="1" value="3" required>
+                            </div>
+                            
+                            <div class="row">
+                                <br>
+                                <strong>Complexidade do Projeto</strong> 
+                                <p>Leva em consideração o número de requisitos, tecnologias e partes envolvidas no projeto.</p>
+                                <small>(Baixa <-> Alta)</small>
+                                <input type="range" id="compl_proj" name="compl_proj" min="1" max="5" step="1" value="3" required>
+                            </div>
+                            
+                            <div class="row">
+                                <br>
+                                <strong>Tempo de Ciclo de Desenvolvimento</strong> 
+                                <p>Considera o tempo estimado para concluir um ciclo completo de desenvolvimento do projeto.</p>
+                                <small>(Muito Curto <-> Muito Longo)</small>
+                                <input type="range" id="ciclo_desenvolvimento" name="ciclo_desenvolvimento" min="1" max="5" step="1" value="3" required>
+                            </div>
+                            
+                            <div class="row">
+                                <br>
+                                <strong>Escopo de Requisitos</strong>
+                                <p>Avalia o nível de clareza e detalhamento dos requisitos do projeto.</p>
+                                <small>(Pouco Definido <-> Bem Definido)</small>
+                                <input type="range" id="escopo_requisitos" name="escopo_requisitos" min="1" max="5" step="1" value="3" required>
+                            </div>
+                        </div>
+                    </div>
+
+                <!-- Categoria 2: Equipe e Stakeholders -->
+                <div class="swiper-slide">
+                    <div class="category-block">
+                        <h3>Equipe e Stakeholders</h3>
+                        
+                        <div class="row">
+                            <br>
+                            <strong>Tamanho da Equipe</strong> 
+                            <p>Avalia o número de membros da equipe envolvidos no projeto.</p>
+                            <small>(Pequeno <-> Grande)</small>
+                            <input type="range" id="tam_equipe" name="tam_equipe" min="1" max="5" step="1" value="3" required>
+                        </div>
+                        
+                        <div class="row">
+                            <br>
+                            <strong>Relacionamento da Equipe</strong> 
+                            <p>Leva em consideração o nível de colaboração entre os membros da equipe.</p>
+                            <small>(Formal <-> Colaborativo)</small>
+                            <input type="range" id="rel_equipe" name="rel_equipe" min="1" max="5" step="1" value="3" required>
+                        </div>
+                        
+                        <div class="row">
+                            <br>
+                            <strong>Gestão de Equipe</strong> 
+                            <p>Avalia o estilo de gestão da equipe, seja ele hierárquico ou colaborativo.</p>
+                            <small>(Muito Vertical <-> Muito Horizontal)</small>
+                            <input type="range" id="gestao_equipe" name="gestao_equipe" min="1" max="5" step="1" value="3" required>
+                        </div>
+                        
+                        <div class="row">
+                            <br>
+                            <strong>Flexibilidade dos Stakeholders</strong> 
+                            <p>Mede a disposição dos stakeholders para ajustes e mudanças ao longo do projeto.</p>
+                            <small>(Baixa <-> Alta)</small>
+                            <input type="range" id="flex_stake" name="flex_stake" min="1" max="5" step="1" value="3" required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Categoria 3: Requisitos e Compromissos -->
+                <div class="swiper-slide">
+                    <div class="category-block">
+                        <h3>Requisitos e Compromissos</h3>
+                        
+                        <div class="row">
+                            <br>
+                            <strong>Estabilidade dos Requisitos</strong> 
+                            <p>Avalia se os requisitos tendem a mudar ao longo do projeto.</p>
+                            <small>(Muito Instável <-> Muito Estável)</small>
+                            <input type="range" id="estab_req" name="estab_req" min="1" max="5" step="1" value="3" required>
+                        </div>
+                        
+                        <div class="row">
+                            <br>
+                            <strong>Clareza do Escopo</strong> 
+                            <p>Leva em consideração o nível de clareza do escopo do projeto.</p>
+                            <small>(Muito Confuso <-> Muito Claro)</small>
+                            <input type="range" id="clar_escopo" name="clar_escopo" min="1" max="5" step="1" value="3" required>
+                        </div>
+                        
+                        <div class="row">
+                            <br>
+                            <strong>Compromisso com o Cliente</strong> 
+                            <p>Analisa o nível de comprometimento do cliente com o sucesso do projeto.</p>
+                            <small>(Baixo <-> Alto)</small>
+                            <input type="range" id="comp_cliente" name="comp_cliente" min="1" max="5" step="1" value="3" required>
+                        </div>
+                        
+                        <div class="row">
+                            <br>
+                            <strong>Engajamento do Cliente</strong> 
+                            <p>Mede o grau de participação do cliente durante o andamento do projeto.</p>
+                            <small>(Pouco Participativo <-> Muito Participativo)</small>
+                            <input type="range" id="engajamento_cliente" name="engajamento_cliente" min="1" max="5" step="1" value="3" required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Categoria 4: Riscos e Sustentabilidade -->
+                <div class="swiper-slide">
+                    <div class="category-block">
+                        <h3>Riscos e Sustentabilidade</h3>
+                        
+                        <div class="row">
+                            <br>
+                            <strong>Clareza o Risco</strong> 
+                            <p>Avalia quão claros são os riscos identificados no projeto.</p>
+                            <small>(Confuso <-> Claro)</small>
+                            <input type="range" id="clar_risco" name="clar_risco" min="1" max="5" step="1" value="3" required>
+                        </div>
+                        
+                        <div class="row">
+                            <br>
+                            <strong>Riscos do Projeto</strong> 
+                            <p>Mede o nível de risco envolvido no projeto em termos de impacto e probabilidade.</p>
+                            <small>(Baixo <-> Alto)</small>
+                            <input type="range" id="risco_proj" name="risco_proj" min="1" max="5" step="1" value="3" required>
+                        </div>
+                        
+                        <div class="row">
+                            <br>
+                            <strong>Estabilidade Ambiental</strong> 
+                            <p>Avalia o ambiente externo e interno do projeto em termos de estabilidade.</p>
+                            <small>(Instável <-> Estável)</small>
+                            <input type="range" id="estab_ambiental" name="estab_ambiental" min="1" max="5" step="1" value="3" required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Categoria 5: Custo e Flexibilidade -->
+                <div class="swiper-slide">
+                    <div class="category-block">
+                        <h3>Custo e Flexibilidade</h3>
+                        
+                        <div class="row">
+                            <br>
+                            <strong>Custo do Projeto</strong> 
+                            <p>Considera o custo total estimado do projeto em termos de orçamento.</p>
+                            <small>(Baixo <-> Alto)</small>
+                            <input type="range" id="custo_proj" name="custo_proj" min="1" max="5" step="1" value="3" required>
+                        </div>
+                        
+                        <div class="row">
+                            <br>
+                            <strong>Flexibilidade para Mudanças</strong> 
+                            <p>Avalia a capacidade de o projeto se adaptar a mudanças de escopo ou requisitos.</p>
+                            <small>(Baixa <-> Alta)</small>
+                            <input type="range" id="flex_mudancas" name="flex_mudancas" min="1" max="5" step="1" value="3" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+                <!-- Botões de navegação -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+
+            <button type="submit" class="submit-button">Which Methodology?</button>
+        </form>
+
+    </div>
+
+        <!-- Exibição dos resultados após a previsão -->
+        {% if predicted_targets %}
+            <div class="results">
+                <h2>Ranking de Metodologias</h2>
+                <ol>
+                    {% for target, distance in predicted_targets %}
+                        <li>{{ target }} (Distância {{ "%.2f"|format(distance) }})</li>
+                    {% endfor %}
+                </ol>
+
+                <br>
+                <h3>Resumo dos Resultados</h3>
+                <ol>
+                    {% for explanation in explanations %}
+                        <li>{{ explanation }}</li>
+                    {% endfor %}
+                </ol>
+            </div>
+        {% endif %}
+
+    </div>
+
+    <!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Inicializar o Swiper -->
+    <script>
+        var swiper = new Swiper('.swiper-container', {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+        });
+    </script>
+</body>
+</html>

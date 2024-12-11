@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | Which Methodology?</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='images/wm_favicon.ico') }}" type="image/x-icon">
+</head>
+<body>
+    <div class="home-container">
+        <div class="content-wrapper" id="main-content">
+            <div class="logo-container">
+                <img src="{{ url_for('static', filename='images/wm_logo.png') }}" alt="Logo" class="logo">
+                <!-- Botão Acessar Sistema abaixo da logo -->
+                <a href="{{ url_for('forms') }}" class="access-button">Acessar Sistema</a>
+            </div>
+            <div class="description-container">
+                <h1 class="main-title">Escolha de Metodologias</h1>
+                <p class="intro-text">
+                    A escolha da metodologia adequada para o desenvolvimento de software é um fator crítico que influencia diretamente o sucesso de qualquer projeto. Metodologias variadas, sejam elas ágeis ou tradicionais, impactam na eficiência, na qualidade do produto final e no cumprimento de prazos. Para ajudar gestores e equipes de desenvolvimento a tomarem decisões mais assertivas, este sistema oferece uma análise personalizada baseada nas características específicas do seu projeto, sugerindo as metodologias mais adequadas ao seu contexto.
+                </p>
+                <h2 class="main-title">Which Methodology?</h2>
+                <p class="intro-text">
+                    Este sistema de apoio à decisão utiliza algoritmos avançados de clusterização para identificar a metodologia de desenvolvimento de software mais adequada para o seu projeto, com base em variáveis como tamanho da equipe, escopo, flexibilidade dos stakeholders, entre outras. Com uma interface intuitiva, ele oferece um ranking das metodologias mais indicadas para ajudar na tomada de decisão estratégica.
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
