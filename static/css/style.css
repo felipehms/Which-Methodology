@@ -1,0 +1,235 @@
+/* Estilo geral para a página */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+.container {
+    background-color: #6caddf;
+    padding: 20px;
+    border-radius: 7px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 800px;
+    margin-bottom: 30px;
+}
+
+/* Estilo dos blocos de categorias */
+.category-block {
+    background-color: white;
+    opacity: 0.8;
+    padding: 20px;
+    border-radius: 7px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    text-align: center; /* Centraliza o conteúdo */
+}
+
+/* Título fora do bloco */
+.title-criteria {
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #00285e;
+}
+
+/* Swiper (Carrossel) */
+.swiper-container {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* Ocultar a barra de paginação */
+.swiper-pagination {
+    display: none;
+}
+
+/* Estilo para o nome dos critérios */
+.row strong {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+/* Estilo para a descrição dos critérios */
+.row p {
+    font-size: 12px;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.row small {
+    display: block;
+    font-size: 12px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/* Centralização e espaçamento dos sliders */
+.row input[type="range"] {
+    display: block;
+    margin: 0 auto 20px auto;
+    width: 100%;
+    max-width: 300px;
+}
+
+/* Estilo do botão de submissão */
+.submit-button {
+    display: block;
+    margin: 20px auto; /* Centraliza o botão horizontalmente */
+    padding: 10px;
+    border: none;
+    border-radius: 7px;
+    background-color: #00285e;
+    color: #ffffff;
+    cursor: pointer;
+    margin-top: 20px;
+    width: 100%;
+    max-width: 540px;
+}
+
+.submit-button:hover {
+    background-color: #0056b3;
+}
+
+/* Estilo para a exibição de resultados */
+.results {
+    margin-top: 30px;
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #6caddf;
+    border-radius: 7px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    width: 100%;
+    max-width: 800px;
+}
+
+.results h2, .results h3 {
+    margin-top: 0;
+    text-align: center;
+    color: #00285e;
+}
+
+.results ol, .results ul {
+    margin-left: 20px;
+    color: white;
+}
+
+.results li {
+    margin-bottom: 10px;
+}
+
+/* Estilo geral para a página */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #00285e;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Container principal */
+.home-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+/* Wrapper do conteúdo */
+.content-wrapper {
+    background-color: #6caddf;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    max-width: 900px;
+    width: 100%;
+    margin: 20px;
+}
+
+/* Logo na Home */
+.logo-container {
+    flex: 1;
+    text-align: center;
+}
+
+.logo {
+    max-width: 250px;
+    height: auto;
+    margin-bottom: 20px;
+    border-radius: 7px;
+}
+
+/* Logo no Forms */
+.logo-container-forms {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.logo-img {
+    width: 200px; /* Ajuste o tamanho conforme necessário */
+    height: 200px;
+    object-fit: contain;
+    border: 2px solid #6caddf;
+    border-radius: 10px;
+}
+/* Estilo do botão Acessar Sistema */
+.access-button {
+    padding: 10px 20px;
+    background-color: #00285e;
+    color: white;
+    text-decoration: none;
+    border-radius: 7px;
+    font-size: 16px;
+    display: inline-block;
+    margin-top: 10px;
+    width: 210px;
+}
+
+.access-button:hover {
+    background-color: #0056b3;
+}
+
+/* Estilo do descritivo */
+.description-container {
+    flex: 2;
+    margin-left: 20px;
+}
+
+.main-title {
+    font-size: 24px;
+    color: 00285e;
+    margin-bottom: 10px;
+}
+
+.intro-text {
+    font-size: 14px;
+    color: white;
+    line-height: 1.4;
+}
