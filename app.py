@@ -6,44 +6,43 @@ import numpy as np
 
 app = Flask(__name__)
 
-# Dados fornecidos
 data = pd.DataFrame({
-    'Tamanho do Projeto': [5.00, 4.00, 5.00, 5.00, 2.00, 2.00, 2.00, 3.00, 3.00, 2.00],
-    'Tamanho da Equipe': [5.00, 3.00, 5.00, 5.00, 3.00, 2.00, 2.00, 3.00, 2.00, 2.00],
-    'Estabilidade dos Requisitos': [5.00, 1.00, 5.00, 5.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00],
-    'Relacionamento da Equipe': [1.00, 5.00, 1.00, 1.00, 5.00, 5.00, 5.00, 5.00, 5.00, 5.00],
-    'Compromisso com o Cliente': [3.00, 5.00, 3.00, 3.00, 5.00, 5.00, 5.00, 5.00, 5.00, 5.00],
-    'Clareza do Escopo': [5.00, 1.00, 5.00, 5.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00],
-    'Clareza o Risco': [5.00, 1.00, 5.00, 5.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00],
-    'Estabilidade Ambiental': [5.00, 1.00, 5.00, 5.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00],
-    'Flexibilidade dos Stakeholders': [1.00, 5.00, 1.00, 1.00, 5.00, 5.00, 5.00, 5.00, 5.00, 5.00],
-    'Complexidade do Projeto': [2.00, 3.00, 5.00, 4.00, 4.00, 4.00, 4.00, 4.00, 4.00, 4.00],
-    'Riscos do Projeto': [2.00, 2.00, 5.00, 5.00, 3.00, 4.00, 4.00, 3.00, 4.00, 3.00],
-    'Tempo de Ciclo de Desenvolvimento': [5.00, 2.00, 4.00, 3.00, 2.00, 1.00, 1.00, 2.00, 1.00, 2.00],
-    'Flexibilidade para Mudanças': [1.00, 5.00, 1.00, 4.00, 5.00, 5.00, 5.00, 5.00, 5.00, 5.00],
-    'Custo do Projeto': [3.00, 2.00, 4.00, 4.00, 2.00, 3.00, 2.00, 2.00, 3.00, 2.00],
-    'Escopo de Requisitos': [5.00, 4.00, 5.00, 4.00, 4.00, 4.00, 4.00, 4.00, 5.00, 4.00],
-    'Gestão de Equipe': [3.00, 4.00, 3.00, 4.00, 5.00, 5.00, 5.00, 5.00, 5.00, 5.00],
-    'Engajamento do Cliente': [2.00, 4.00, 4.00, 5.00, 5.00, 5.00, 5.00, 5.00, 5.00, 5.00],
-    'teste': ['Water Fall', 'Lean', 'V-Model', 'Six Sigma', 'Scrum', 'XP', 'Crystal', 'Agile', 'DevOps', 'Kanban']
+    'Tamanho do Projeto': [5.00, 5.00, 2.00, 2.00, 2.00, 3.00, 2.00],
+    'Tamanho da Equipe': [5.00, 5.00, 3.00, 2.00, 2.00, 3.00, 2.00],
+    'Estabilidade dos Requisitos': [5.00, 5.00, 1.00, 1.00, 1.00, 1.00, 1.00],
+    'Relacionamento da Equipe': [1.00, 1.00, 5.00, 5.00, 5.00, 5.00, 5.00],
+    'Compromisso com o Cliente': [3.00, 3.00, 5.00, 5.00, 5.00, 5.00, 5.00],
+    'Clareza do Escopo': [5.00, 5.00, 1.00, 1.00, 1.00, 1.00, 1.00],
+    'Clareza o Risco': [5.00, 5.00, 1.00, 1.00, 1.00, 1.00, 1.00],
+    'Estabilidade Ambiental': [5.00, 5.00, 1.00, 1.00, 1.00, 1.00, 1.00],
+    'Flexibilidade dos Stakeholders': [1.00, 1.00, 5.00, 5.00, 5.00, 5.00, 5.00],
+    'Complexidade do Projeto': [2.00, 5.00, 4.00, 4.00, 4.00, 4.00, 4.00],
+    'Riscos do Projeto': [2.00, 5.00, 3.00, 4.00, 4.00, 3.00, 3.00],
+    'Tempo de Ciclo de Desenvolvimento': [5.00, 4.00, 2.00, 1.00, 1.00, 2.00, 2.00],
+    'Flexibilidade para Mudanças': [1.00, 1.00, 5.00, 5.00, 5.00, 5.00, 5.00],
+    'Custo do Projeto': [3.00, 4.00, 2.00, 3.00, 2.00, 2.00, 2.00],
+    'Escopo de Requisitos': [5.00, 5.00, 4.00, 4.00, 4.00, 4.00, 4.00],
+    'Gestão de Equipe': [3.00, 3.00, 5.00, 5.00, 5.00, 5.00, 5.00],
+    'Engajamento do Cliente': [2.00, 4.00, 5.00, 5.00, 5.00, 5.00, 5.00],
+    'teste': ['Water Fall', 'V-Model', 'Scrum', 'XP', 'Crystal', 'Agile', 'Kanban']
 })
 
-# Separe as features e o target
+# Separação das features e o target
 X = data.drop("teste", axis=1)
 y = data["teste"]
 
-# Normalize as features
+# Normalização das features
 scaler = StandardScaler()
 X_scaled = scaler.fit_transform(X)
 
-# Determine o número de clusters únicos nos dados
-n_clusters = len(np.unique(y))
+# Determinação do número de clusters únicos nos dados
+n_clusters = len(data['teste'].unique())
 
-# Inicialize e ajuste o modelo KMeans
+# Inicialização e ajuste do modelo KMeans
 kmeans = KMeans(n_clusters=n_clusters, random_state=42)
 kmeans.fit(X_scaled)
 
-# Adicione os rótulos de cluster ao DataFrame original
+# Adição dos rótulos de cluster ao DataFrame original
 data['cluster'] = kmeans.labels_
 
 # Mapeamento dos clusters
@@ -60,14 +59,11 @@ def predict_clusters(new_sample, model, scaler, mapping):
 # Dicionário de explicações das metodologias
 methodology_explanations = {
     "Water Fall": "Waterfall é um modelo sequencial de desenvolvimento de software que segue uma abordagem linear e faseada.",
-    "Lean": "Lean é uma metodologia focada em maximizar valor ao cliente enquanto minimiza desperdícios.",
     "V-Model": "V-Model é um modelo de desenvolvimento em que as fases de verificação e validação são executadas em paralelo.",
-    "Six Sigma": "Six Sigma é uma metodologia que busca melhorar a qualidade dos processos, identificando e eliminando defeitos.",
     "Scrum": "Scrum é uma estrutura ágil que promove a entrega incremental e iterativa de projetos complexos.",
     "XP": "Extreme Programming (XP) é uma metodologia ágil que se concentra em melhorar a qualidade do software e a capacidade de resposta às mudanças.",
     "Crystal": "Crystal é uma família de metodologias ágeis que se adaptam ao tamanho e criticidade do projeto.",
     "Agile": "Agile é uma abordagem de desenvolvimento que enfatiza a colaboração, flexibilidade e entregas frequentes.",
-    "DevOps": "DevOps é uma prática que une desenvolvimento e operações para melhorar a colaboração e a entrega contínua.",
     "Kanban": "Kanban é um método ágil de gerenciamento de trabalho que usa um sistema visual para controlar a produção."
 }
 

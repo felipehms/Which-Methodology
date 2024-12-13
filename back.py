@@ -7,41 +7,49 @@ import streamlit as st
 
 # Dados fornecidos
 data = pd.DataFrame({
-    'Tamanho do Projeto': [3.00, 2.50, 3.00, 3.00, 1.50, 1.50, 1.50, 4.00, 4.00, 1.50],
-    'Tamanho da Equipe': [3.00, 2.00, 3.00, 3.00, 2.00, 1.50, 1.50, 4.00, 1.50, 1.50],
-    'Estabilidade dos Requisitos': [2.00, 1.00, 2.00, 2.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00],
-    'Relacionamento da Equipe': [1.00, 2.00, 1.00, 1.00, 2.00, 2.00, 2.00, 2.00, 2.00, 2.00],
-    'Compromisso com o Cliente': [1.00, 2.00, 1.00, 1.00, 2.00, 2.00, 2.00, 2.00, 2.00, 2.00],
-    'Clareza do Escopo': [2.00, 1.00, 2.00, 2.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00],
-    'Clareza o Risco': [2.00, 1.00, 2.00, 2.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00],
-    'Estabilidade Ambiental': [2.00, 1.00, 2.00, 2.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00],
-    'Flexibilidade dos Stakeholders': [1.00, 2.00, 1.00, 1.00, 2.00, 2.00, 2.00, 2.00, 2.00, 2.00],
-    'teste': ['Water Fall', 'Lean', 'V-Model', 'Six Sigma', 'Scrum', 'XP', 'Crystal', 'Agile', 'DevOps', 'Kanban']
+    'Tamanho do Projeto': [5.00, 5.00, 2.00, 2.00, 2.00, 3.00, 2.00],
+    'Tamanho da Equipe': [5.00, 5.00, 3.00, 2.00, 2.00, 3.00, 2.00],
+    'Estabilidade dos Requisitos': [5.00, 5.00, 1.00, 1.00, 1.00, 1.00, 1.00],
+    'Relacionamento da Equipe': [1.00, 1.00, 5.00, 5.00, 5.00, 5.00, 5.00],
+    'Compromisso com o Cliente': [3.00, 3.00, 5.00, 5.00, 5.00, 5.00, 5.00],
+    'Clareza do Escopo': [5.00, 5.00, 1.00, 1.00, 1.00, 1.00, 1.00],
+    'Clareza o Risco': [5.00, 5.00, 1.00, 1.00, 1.00, 1.00, 1.00],
+    'Estabilidade Ambiental': [5.00, 5.00, 1.00, 1.00, 1.00, 1.00, 1.00],
+    'Flexibilidade dos Stakeholders': [1.00, 1.00, 5.00, 5.00, 5.00, 5.00, 5.00],
+    'Complexidade do Projeto': [2.00, 5.00, 4.00, 4.00, 4.00, 4.00, 4.00],
+    'Riscos do Projeto': [2.00, 5.00, 3.00, 4.00, 4.00, 3.00, 3.00],
+    'Tempo de Ciclo de Desenvolvimento': [5.00, 4.00, 2.00, 1.00, 1.00, 2.00, 2.00],
+    'Flexibilidade para Mudanças': [1.00, 1.00, 5.00, 5.00, 5.00, 5.00, 5.00],
+    'Custo do Projeto': [3.00, 4.00, 2.00, 3.00, 2.00, 2.00, 2.00],
+    'Escopo de Requisitos': [5.00, 5.00, 4.00, 4.00, 4.00, 4.00, 4.00],
+    'Gestão de Equipe': [3.00, 3.00, 5.00, 5.00, 5.00, 5.00, 5.00],
+    'Engajamento do Cliente': [2.00, 4.00, 5.00, 5.00, 5.00, 5.00, 5.00],
+    'teste': ['Water Fall', 'V-Model', 'Scrum', 'XP', 'Crystal', 'Agile', 'Kanban']
 })
 
-# Separe as features e o target
+# Separação das features e o target
 X = data.drop("teste", axis=1)
 y = data["teste"]
 
-# Normalize as features
+# Normalização das features
 scaler = StandardScaler()
 X_scaled = scaler.fit_transform(X)
 
-# Escolha o número de clusters
-n_clusters = len(np.unique(y))  # Escolher o número de clusters baseado no número de classes no target
+# Escolha do número de clusters
+n_clusters = len(np.unique(y))
 
-# Inicialize e ajuste o modelo KMeans
+# Inicialização e ajuste do modelo KMeans
 kmeans = KMeans(n_clusters=n_clusters, random_state=42)
 kmeans.fit(X_scaled)
 
-# Adicione os rótulos de cluster ao DataFrame original
+# Adição dos rótulos de cluster ao DataFrame original
 data['cluster'] = kmeans.labels_
 
-# Analise a qualidade da clusterização (opcional)
+# Análise da qualidade da clusterização (opcional)
 silhouette_avg = silhouette_score(X_scaled, kmeans.labels_)
 st.write(f'Silhouette Score: {silhouette_avg}')
 
-# Visualize os clusters e os targets
+# Visualização dos clusters e targets
 cluster_target_mapping = data.groupby('cluster')['teste'].agg(lambda x: x.mode().iloc[0])
 st.write(cluster_target_mapping)
 
